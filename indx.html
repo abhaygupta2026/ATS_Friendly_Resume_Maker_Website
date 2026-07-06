@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Friendly Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- LEFT INPUT SIDE -->
+        <div class="control-panel no-print">
+            <h2>ATS Resume Creator</h2>
+            <p class="subtitle">Enter details below. Layout is strictly single-column for ATS compatibility.</p>
+            
+            <div class="input-card">
+                <h3>1. Contact Details</h3>
+                <label>Full Name</label>
+                <input type="text" id="nameIn" oninput="buildATS()" placeholder="Abhay Gupta">
+                <label>Target Job Title</label>
+                <input type="text" id="titleIn" oninput="buildATS()" placeholder="Software Engineer">
+                <label>Email Address</label>
+                <input type="email" id="emailIn" oninput="buildATS()" placeholder="abhay.gupta@email.com">
+                <label>Phone Number</label>
+                <input type="text" id="phoneIn" oninput="buildATS()" placeholder="+91 99999 88888">
+                <label>Location (City, State)</label>
+                <input type="text" id="locIn" oninput="buildATS()" placeholder="Delhi, India">
+                <label>LinkedIn / Portfolio URL</label>
+                <input type="text" id="linkIn" oninput="buildATS()" placeholder="://linkedin.com">
+            </div>
+
+            <div class="input-card">
+                <h3>2. Professional Summary</h3>
+                <textarea id="summaryIn" oninput="buildATS()" rows="4" placeholder="Summary elements..."></textarea>
+            </div>
+
+            <div class="input-card">
+                <h3>3. Technical Skills</h3>
+                <label>Skills (Comma Separated)</label>
+                <input type="text" id="skillsIn" oninput="buildATS()" placeholder="Java, Python, SQL, Git, AWS">
+            </div>
+
+            <div class="input-card">
+                <h3>4. Work Experience</h3>
+                <label>Company Name</label>
+                <input type="text" id="companyIn" oninput="buildATS()" placeholder="Tech Innovators Lab">
+                <label>Job Title</label>
+                <input type="text" id="roleIn" oninput="buildATS()" placeholder="Associate Developer">
+                <label>Duration / Dates</label>
+                <input type="text" id="expDatesIn" oninput="buildATS()" placeholder="June 2024 - Present">
+                <label>Key Achievements (Use bullet points)</label>
+                <textarea id="expPointsIn" oninput="buildATS()" rows="4" placeholder="• Developed features using React...&#10;• Optimized database queries by 20%..."></textarea>
+            </div>
+
+            <div class="input-card">
+                <h3>5. Education</h3>
+                <label>Degree & Major</label>
+                <input type="text" id="degreeIn" oninput="buildATS()" placeholder="Bachelor of Technology in CS">
+                <label>University / School</label>
+                <input type="text" id="eduNameIn" oninput="buildATS()" placeholder="ABC University">
+                <label>Graduation Year or Date</label>
+                <input type="text" id="eduDatesIn" oninput="buildATS()" placeholder="2020 - 2024">
+            </div>
+
+            <button onclick="window.print()" class="print-btn">Export ATS PDF</button>
+        </div>
+
+        <!-- RIGHT PREVIEW SIDE -->
+        <div class="preview-panel">
+            <div class="ats-sheet">
+                
+                <!-- Center ATS Header -->
+                <div class="ats-header">
+                    <h1 id="viewName">Abhay Gupta</h1>
+                    <h2 id="viewTitle">Software Engineer</h2>
+                    <div class="ats-meta">
+                        <span id="viewPhone">+91 99999 88888</span> | 
+                        <span id="viewEmail">abhay.gupta@email.com</span> | 
+                        <span id="viewLoc">Delhi, India</span>
+                    </div>
+                    <div class="ats-meta" style="margin-top: 4px;">
+                        <span id="viewLink">://linkedin.com</span>
+                    </div>
+                </div>
+
+                <!-- Summary Section -->
+                <div class="ats-section">
+                    <div class="section-title">Professional Summary</div>
+                    <p id="viewSummary" class="ats-text">Results-driven Software Engineer with a solid foundation in building web applications. Proven ability to optimize systems and write clean, testable code.</p>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="ats-section">
+                    <div class="section-title">Core Competencies</div>
+                    <p id="viewSkills" class="ats-text">Java, Python, SQL, Git, AWS</p>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="ats-section">
+                    <div class="section-title">Professional Experience</div>
+                    <div class="block-header">
+                        <span id="viewCompany" class="bold-text">Tech Innovators Lab</span>
+                        <span id="viewExpDates" class="italic-text">June 2024 - Present</span>
+                    </div>
+                    <div id="viewRole" class="sub-block-title">Associate Developer</div>
+                    <!-- Bullet points Div-->
+                    <div id="viewExpPoints" class="ats-text points-container">
+                        <ul>
+                            <li>Developed responsive features using React, reducing loading time by 15%.</li>
+                            <li>Optimized SQL database queries which enhanced application scalability.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="ats-section">
+                    <div class="section-title">Education</div>
+                    <div class="block-header">
+                        <span id="viewEduName" class="bold-text">ABC University</span>
+                        <span id="viewEduDates" class="italic-text">2020 - 2024</span>
+                    </div>
+                    <div id="viewDegree" class="sub-block-title">Bachelor of Technology in CS</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script linking at the bottom -->
+    <script src="script.js"></script>
+</body>
+</html>
